@@ -51,7 +51,7 @@ The output will look like this:
 
 ## More advanced examples
 
-Checkout the examples folder.
+Checkout the examples && tests.
 
 ## Tests
 

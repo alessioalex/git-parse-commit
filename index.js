@@ -28,6 +28,16 @@ function parseCommit(data) {
         rev : Number(svn[1]),
         uuid : svn[2]
       };
+    } else if (/-----BEGIN PGP SIGNATURE-----/.test(line)) {
+      i++;
+      line = data[i].trim();
+
+      while (!(/-----END PGP SIGNATURE-----/.test(line))) {
+        commit.pgp = commit.pgp ? commit.pgp + '\n' : '';
+        commit.pgp += line;
+        i++;
+        line = data[i].trim();
+      }
     } else if (!parseAuthors(line, commit) && /^\s+(\S.+)/.exec(line)) {
       // empty line means commit message begins
       break;

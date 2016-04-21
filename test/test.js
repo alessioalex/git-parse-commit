@@ -6,7 +6,7 @@ var out = require('./out.json');
 var parseCommit = require('../');
 var commitData = fs.readFileSync(__dirname + '/../test/fixtures.txt', 'utf8');
 
-test('should parse the commits', function(assert) {
+test('should parse the commits', function(t) {
   var commits = [];
 
   var lines = commitData.split('\n');
@@ -17,8 +17,9 @@ test('should parse the commits', function(assert) {
 
   while (i < lines.length) {
     line = lines[i];
+    matched = line.match(/^(\u0000){0,1}([0-9a-fA-F]{40})/);
 
-    if (matched = line.match(/^(\u0000){0,1}([0-9a-fA-F]{40})/)) {
+    if (line === '\u0000' || matched) {
       if (commit) {
         commits.push(parseCommit(commit));
       }
@@ -31,6 +32,6 @@ test('should parse the commits', function(assert) {
     i++;
   }
 
-  assert.deepEqual(commits, out, 'what goes in must come out correctly');
-  assert.end();
+  t.deepEqual(commits, out, 'what goes in must come out correctly');
+  t.end();
 });

@@ -12,10 +12,12 @@ var line = null;
 
 while (i < lines.length) {
   line = lines[i];
+  matched = line.match(/^(\u0000){0,1}([0-9a-fA-F]{40})/);
 
-  if (matched = line.match(/^(\u0000){0,1}([0-9a-fA-F]{40})/)) {
+  if (line === '\u0000' || matched) {
     if (commit) {
       console.log(parseCommit(commit));
+      console.log('----');
     }
 
     commit = line;
