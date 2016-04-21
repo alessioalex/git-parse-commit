@@ -1,6 +1,6 @@
 {
   "name": "git-parse-commit",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Parse git commit data, like the one we get when running `git rev-list ...`.",
   "main": "index.js",
   "dependencies": {
