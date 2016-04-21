@@ -2,6 +2,8 @@
 
 Parse git commit data, like the one we get after running `git rev-list --max-count=5 --header HEAD --`.
 
+[![build status](https://secure.travis-ci.org/alessioalex/git-parse-commit.png)](http://travis-ci.org/alessioalex/git-parse-commit)
+
 ## Usage
 
 Say we have a commit like the following:
