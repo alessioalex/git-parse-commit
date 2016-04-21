@@ -7,10 +7,14 @@
     "git-parse-human2": "~0.0.1"
   },
   "devDependencies": {
-    "tape": "~2.13.1"
+    "alessioalex-standard": "^1.1.0",
+    "husky": "^0.11.4",
+    "tape": "~4.5.1"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "lint": "alessioalex-standard",
+    "test": "node test/test.js",
+    "precommit": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,5 @@
-"use strict";
+/* eslint-disable no-console, func-names */
+'use strict';
 
 var parseCommit = require('../');
 var exec = require('child_process').exec;
@@ -18,6 +19,8 @@ var cmd = 'git --git-dir=' + GIT_DIR + ' rev-list --header --max-count=';
 cmd += COUNT + ' HEAD --';
 
 exec(cmd, function(err, commitData) {
+  if (err) { throw err; }
+
   var lines = commitData.split('\n');
   var i = 0;
   var commit = null;
@@ -26,10 +29,12 @@ exec(cmd, function(err, commitData) {
 
   while (i < lines.length) {
     line = lines[i];
+    matched = line.match(/^(\u0000){0,1}([0-9a-fA-F]{40})/);
 
-    if (matched = line.match(/^(\u0000){0,1}([0-9a-fA-F]{40})/)) {
+    if (line === '\u0000' || matched) {
       if (commit) {
         console.log(parseCommit(commit));
+        console.log('----');
       }
 
       commit = line;

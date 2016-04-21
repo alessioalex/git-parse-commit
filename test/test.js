@@ -1,4 +1,5 @@
-"use strict";
+/* eslint-disable func-names */
+'use strict';
 
 var fs = require('fs');
 var test = require('tape');

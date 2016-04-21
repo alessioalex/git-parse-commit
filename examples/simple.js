@@ -1,4 +1,5 @@
-"use strict";
+/* eslint-disable no-console, func-names */
+'use strict';
 
 // the commit data looks like this:
 /*
@@ -10,7 +11,7 @@ author Yves Senn <yves.senn@gmail.com> 1400484883 +0200
 committer Yves Senn <yves.senn@gmail.com> 1400484883 +0200
 
     Merge pull request #14962 from arunagw/aa-fix-rake-activerecord
-    
+
     Reorganize ActiveRecord tasks [Arun Agrawal & Abd ar-Rahman Hamidi]
 */
 
