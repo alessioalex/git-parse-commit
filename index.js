@@ -10,7 +10,12 @@ function parseCommit(data) {
   };
   var lines = data.split('\n');
 
-  commit.hash = lines.shift().match(/[0-9a-fA-F]{40}/)[0];
+  // depending on the command used (rev-list or cat-file -p) the first line
+  // represents either the hash or the tree, see
+  // https://github.com/alessioalex/git-parse-commit/issues/2
+  if (!(/^tree ([0-9a-fA-F]{40})$/.test(lines[0]))) {
+    commit.hash = lines.shift().match(/[0-9a-fA-F]{40}/)[0];
+  }
 
   var i = 0;
   line = lines[i].trim();

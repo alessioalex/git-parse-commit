@@ -4,8 +4,10 @@
 var fs = require('fs');
 var test = require('tape');
 var out = require('./out.json');
+var outCatFile = require('./out-catfile.json');
 var parseCommit = require('../');
 var commitData = fs.readFileSync(__dirname + '/../test/fixtures.txt', 'utf8');
+var catFileCommitData = fs.readFileSync(__dirname + '/../test/cat-file.txt', 'utf8');
 
 test('should parse the commits', function(t) {
   var commits = [];
@@ -34,5 +36,10 @@ test('should parse the commits', function(t) {
   }
 
   t.deepEqual(commits, out, 'what goes in must come out correctly');
+  t.end();
+});
+
+test('should deal with cat-file output', function(t) {
+  t.deepEqual(parseCommit(catFileCommitData), outCatFile, 'what goes in must come out correctly');
   t.end();
 });
