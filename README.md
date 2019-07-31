@@ -1,6 +1,6 @@
 # git-parse-commit
 
-Parse git commit data, like the one we get after running `git rev-list --max-count=5 --header HEAD --`.
+Parse git commit data, like the one we get after running `git rev-list --max-count=5 --header HEAD --` or `git cat-file -p HEAD^`.
 
 [![build status](https://secure.travis-ci.org/alessioalex/git-parse-commit.png)](http://travis-ci.org/alessioalex/git-parse-commit)
 
