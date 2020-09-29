@@ -25,7 +25,7 @@ We parse it using the module and log the output to the console:
 
 ```js
 var fs = require('fs');
-var parseCommit = require('../');
+var parseCommit = require('git-parse-commit');
 console.log(parseCommit(fs.readFileSync(__dirname + '/commit.txt', 'utf8')));
 ```
 
